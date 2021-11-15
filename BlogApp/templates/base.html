@@ -6,17 +6,27 @@
     <title>Simple Blog App</title>
     <link rel="stylesheet" href="{% static 'base.css' %}">
 </head>
-<br>
-<br>
 
 <body>
+  <div class="main-container">
+    <div class="navbar">
+      <a href="#home">Home</a>
+      <div class="dropdown">
+        <button class="dropbtn">Category 
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          {% for post in object_list %}
+            <div class="post-entry">
+              <a href="#">{{ post.category }}</a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    <a href="#about">About</a>
+    </div>
+  </div>
 
-<ul>
-  <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">News</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="#about">About</a></li>
-</ul>
 
 
 <div class="container">
@@ -25,8 +35,12 @@
 </div>
 
 
+<div class="footer">
+  <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Tech Gadgets Byte</p>
+</div>
 
 </body>
+</div>
 </html>
 
 
