@@ -6,11 +6,15 @@
 {% block content %}
     {% for post in object_list %}
         <div class="post-entry">
-            <h2><a href="">{{ post.title }}</a></h2>
-            <strong><p>{{ post.intro }}</p></strong>
-            <a href="{% url 'post_detail' post.slug %}">Read more</a>
+            <br>
+            <h2>{{ post.title }}</h2>
+            <img src="{{ post.img.url}}" alt="{{ post.title }}" width="150" height="200">
+            <strong><p>{{ post.body }}</p></strong>
             <small><p>{{ post.category }} | {{ post.pub_date }} | {{ post.author }}</p></small>
+            <a href="{% url 'post_detail' post.slug %}">Add comment</a>
         </div>
     {% endfor %}
+    <br>
+    <br>
 
 {% endblock content %}

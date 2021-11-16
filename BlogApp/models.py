@@ -11,14 +11,16 @@ class Post(models.Model):
     author      = models.ForeignKey('auth.user',
                 on_delete=models.CASCADE
                 )
-    intro       = models.TextField()
     body        = models.TextField()
-    # img         = models.ImageField()
+    img         = models.ImageField(upload_to='images/')
+
+    class Meta:
+        ordering = ['-id']
 
 
     def __str__(self):
         return self.title
-
+    
 
 class Category(models.Model):
     title   = models.CharField(max_length=50, unique=True)
@@ -35,7 +37,7 @@ class Comment(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-date_added']
+        ordering = ['-id']
 
     def __str__(self):
-        return f"Comment by Name: {self.name}"
+        return self.name

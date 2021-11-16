@@ -3,9 +3,50 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <div class="post-entry">
-        <h2>{{ single_blog_post_detail.title }}</h2>
-        <p>{{ single_blog_post_detail.body }}</p>
-    </div>
 
+<div class="post-entry">
+    <br>
+    <h2>{{ post.title }}</h2>
+    <img src="{{ post.img.url}}" alt="{{ post.title }}" width="500" height="600">>
+    <p>{{ post.body }}</p>
+</div>
+
+<hr>
+
+<h2 class="subtitle">Comments</h2>
+
+{% for comment in post.comments.all %}
+	<article class="media">
+		<div class="media-content">
+			<div class="content">
+				<p>
+					<strong>{{ comment.name }}</strong> <small>{{ comment.date_added|timesince }} ago</small>
+					<br>
+					{{ comment.body }}
+				</p>
+			</div>
+		</div>
+	</article>
+{% empty %}
+	<div class="notification">
+		No comments yet...
+	</div>
+{% endfor %}
+
+<hr>
+
+<h2 class="subtitle">Add comment</h2>
+
+<form method="post" action=".">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <div class="field">
+        <div class="control">
+            <button class="button is-success">Submit</button>
+        </div>
+    </div>
+</form>
+<br>
 {% endblock content %}
