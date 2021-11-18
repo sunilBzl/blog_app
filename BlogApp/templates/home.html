@@ -6,15 +6,12 @@
 {% block content %}
     {% for post in object_list %}
         <div class="post-entry">
-            <br>
-            <h2>{{ post.title }}</h2>
+            <a href="{% url 'BlogApp:post_detail' post.slug %}"><h3>{{ post.title }}</h3></a>
             <img src="{{ post.img.url}}" alt="{{ post.title }}" width="150" height="200">
-            <strong><p>{{ post.body }}</p></strong>
+            <p>{{ post.body }}</p>
             <small><p>{{ post.category }} | {{ post.pub_date }} | {{ post.author }}</p></small>
-            <a href="{% url 'post_detail' post.slug %}">Add comment</a>
+            <a href="{% url 'BlogApp:post_detail' post.slug %}">Add comment</a><br><br><br>
         </div>
     {% endfor %}
-    <br>
-    <br>
-
+    
 {% endblock content %}

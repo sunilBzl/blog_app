@@ -10,35 +10,39 @@
 <body>
   <div class="main-container">
     <div class="navbar">
-      <a href="http://127.0.0.1:8000/#">Home</a>
+      <a href="{% url 'BlogApp:home' %}">Home</a>
       <div class="dropdown">
         <button class="dropbtn">Category 
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-          {% for post in object_list %}
-            <div class="post-entry">
-              <a href="#">{{ post.category }}</a>
-            </div>
-          {% endfor %}
+          <a href="{% url 'BlogApp:sports' %}">Sports</a>
+          <a href="{% url 'BlogApp:news' %}">News</a>
+          <a href="{% url 'BlogApp:music' %}">Music</a>
         </div>
       </div>
-    <a href="#about">About</a>
+      <a href="{% url 'BlogApp:aboutus' %}">About</a>
+      <div class="user-field">
+        <a href="#">Sign In</a>
+        <a href="#">Register</a>
+      </div>
     </div>
   </div>
 
 
-
-<div class="container">
+<div class="post-posts">
   {% block content %}
   {% endblock content %}
 </div>
 
 
+
+
+</body>
+
 <div class="footer">
   <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Tech Gadgets Byte</p>
 </div>
 
-</body>
 </div>
 </html>
